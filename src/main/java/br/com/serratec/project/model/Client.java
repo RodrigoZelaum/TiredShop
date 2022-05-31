@@ -34,7 +34,5 @@ public class Client {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToMany (mappedBy = "client")
-    private Set<Car> car;
 }
 

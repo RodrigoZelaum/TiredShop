@@ -1,6 +1,5 @@
 package br.com.serratec.project.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +9,9 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "budget")
 public class Budget {
 
@@ -35,4 +33,10 @@ public class Budget {
     @OneToMany(mappedBy = "budget")
     private Set<Car> car;
 
+    public Budget(Integer id, String price, String service, Date data) {
+        this.id = id;
+        this.price = price;
+        this.service = service;
+        this.data = data;
+    }
 }

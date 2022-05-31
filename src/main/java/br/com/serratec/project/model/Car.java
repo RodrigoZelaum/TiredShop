@@ -1,14 +1,16 @@
 package br.com.serratec.project.model;
 
-import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 
-@Entity
+@Setter
+@Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Entity
 public class Car {
 
     @Id
@@ -28,6 +30,11 @@ public class Car {
     @ManyToOne
     private Budget budget;
 
-    @ManyToOne
-    private Client client;
+
+    public Car(Integer id, String model, String brand, Integer year) {
+        this.id = id;
+        this.model = model;
+        this.brand = brand;
+        this.year = year;
+    }
 }

@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-public class TireShopApiApplication {
+public class InitApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TireShopApiApplication.class, args);
+		SpringApplication.run(InitApplication.class, args);
 	}
 
 }
