@@ -3,8 +3,8 @@ package br.com.serratec.project.controller;
 import br.com.serratec.project.dto.ClientDto;
 import br.com.serratec.project.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -13,7 +13,7 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<ClientDto> getAllClients() {
         return clientService.listAll();
     }
@@ -29,12 +29,12 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Long id)  {
+    public void deleteCar(@PathVariable Long id) {
         clientService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void updateCar(@PathVariable Long id, @RequestBody ClientDto car)  {
+    public void updateCar(@PathVariable Long id, @RequestBody ClientDto car) {
         clientService.update(id, car);
     }
 

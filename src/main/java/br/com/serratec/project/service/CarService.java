@@ -1,9 +1,7 @@
 package br.com.serratec.project.service;
 
 import br.com.serratec.project.dto.CarDto;
-import br.com.serratec.project.dto.ClientDto;
 import br.com.serratec.project.model.Car;
-import br.com.serratec.project.model.Client;
 import br.com.serratec.project.repository.CarRepository;
 import br.com.serratec.project.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class CarService {
 

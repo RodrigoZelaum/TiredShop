@@ -19,5 +19,8 @@ public class OrderServiceDto {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
     private String diagnostic;
+    private Long budgetId;
+    private Long clientId;
+    private Long carId;
 
 }

@@ -14,7 +14,7 @@ public class OrderServiceController {
     @Autowired
     OrderSService orderService;
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<OrderServiceDto> getAll() {
         return orderService.listAll();
     }
@@ -30,12 +30,12 @@ public class OrderServiceController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOrder(@PathVariable Long id)  {
+    public void deleteOrder(@PathVariable Long id) {
         orderService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void updateOrder(@PathVariable Long id, @RequestBody OrderServiceDto order)  {
+    public void updateOrder(@PathVariable Long id, @RequestBody OrderServiceDto order) {
         orderService.update(id, order);
     }
 

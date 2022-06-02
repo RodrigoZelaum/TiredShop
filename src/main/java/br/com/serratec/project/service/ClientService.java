@@ -85,8 +85,7 @@ public class ClientService {
         List<Client> clientList = clientRepository.findAll();
         List<ClientDto> clientDtoList = new ArrayList<>();
         for (Client client : clientList) {
-            ClientDto clientDto = new ClientDto();
-            toDto(client);
+            ClientDto clientDto = toDto(client);
             clientDtoList.add(clientDto);
         }
         return clientDtoList;

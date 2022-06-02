@@ -1,10 +1,12 @@
 package br.com.serratec.project.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.sql.Date;
 
 
 @Setter

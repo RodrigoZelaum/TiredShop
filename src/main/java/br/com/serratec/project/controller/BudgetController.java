@@ -5,7 +5,6 @@ import br.com.serratec.project.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
 @RestController
@@ -15,7 +14,7 @@ public class BudgetController {
     @Autowired
     BudgetService bugdgetService;
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<BudgetDto> getAll() {
         return bugdgetService.listAll();
     }
@@ -31,12 +30,12 @@ public class BudgetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Long id)  {
+    public void deleteCar(@PathVariable Long id) {
         bugdgetService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void updateCar(@PathVariable Long id, @RequestBody BudgetDto car)  {
+    public void updateCar(@PathVariable Long id, @RequestBody BudgetDto car) {
         bugdgetService.update(id, car);
     }
 }

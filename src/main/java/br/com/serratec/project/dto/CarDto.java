@@ -14,6 +14,5 @@ public class CarDto {
     private String model;
     private String brand;
     private String year;
-    private Integer idClient;
 
 }
