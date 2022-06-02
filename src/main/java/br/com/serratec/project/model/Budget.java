@@ -20,7 +20,7 @@ public class Budget {
     @Column(name="id")
     private Long id;
 
-    @Column(name="price", nullable = false)
+    @Column(name="address", nullable = false)
     private String address;
 
     @OneToOne(mappedBy = "budget")
