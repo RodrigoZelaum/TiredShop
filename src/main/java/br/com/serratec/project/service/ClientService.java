@@ -39,10 +39,9 @@ public class ClientService {
         Client saveClient = toModel(clientDto);
         clientRepository.save(saveClient);
         return "Client successfully saved";
-
     }
 
-    public ClientDto searchById(Integer id) {
+    public ClientDto searchById(Long id) {
         Optional<Client> client = clientRepository.findById(id);
         Client dataClient;
         ClientDto clientDto = new ClientDto();
@@ -54,7 +53,7 @@ public class ClientService {
         return clientDto;
     }
 
-    public String update(Integer id, ClientDto clientDto) {
+    public String update(Long id, ClientDto clientDto) {
         Optional<Client> client = clientRepository.findById(id);
         Client dataClient = new Client();
 
@@ -77,8 +76,8 @@ public class ClientService {
         return "Client successfully updated";
     }
 
-    public String delete(Integer client_id) {
-        clientRepository.deleteById(client_id);
+    public String delete(Long id) {
+        clientRepository.deleteById(id);
         return "Client successfully deleted";
     }
 

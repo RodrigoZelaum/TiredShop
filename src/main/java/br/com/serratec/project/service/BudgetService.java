@@ -6,30 +6,28 @@ import br.com.serratec.project.repository.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class BudgetService {
-
     @Autowired
     BudgetRepository budgetRepository;
 
     public BudgetDto toDto(Budget budget) {
         BudgetDto budgetDto = new BudgetDto();
         budgetDto.setId(budget.getId());
-        budgetDto.setService(budget.getService());
-        budgetDto.setData(budget.getData());
-
+        budgetDto.setAddress(budget.getAddress());
         return budgetDto;
     }
 
     public Budget toModel(BudgetDto budgetDto) {
         Budget budget = new Budget();
-        budget.setPrice(budgetDto.getPrice());
-        budget.setService(budgetDto.getService());
-        budget.setData(budgetDto.getData());
+        budget.setId(budgetDto.getId());
+        budget.setAddress(budgetDto.getAddress());
+
         return budget;
     }
 
@@ -40,7 +38,7 @@ public class BudgetService {
 
     }
 
-    public BudgetDto search(Integer id) {
+    public BudgetDto search(Long id) {
         Optional<Budget> budget = budgetRepository.findById(id);
         Budget dataBudget;
         BudgetDto budgetDto = new BudgetDto();
@@ -52,23 +50,16 @@ public class BudgetService {
         return budgetDto;
     }
 
-    public void update(Integer id, BudgetDto budgetDto) {
+    public void update(Long id, BudgetDto budgetDto) {
         Budget dataBudget = budgetRepository.findById(id).orElseThrow();
-        if (budgetDto.getPrice() != null) {
-            dataBudget.setPrice(budgetDto.getPrice());
-        }
-        if (budgetDto.getService() != null) {
-            dataBudget.setService(budgetDto.getService());
-        }
-        if (budgetDto.getData() != null) {
-            dataBudget.setData(budgetDto.getData());
+        if (budgetDto.getAddress() != null) {
+            dataBudget.setAddress(budgetDto.getAddress());
         }
 
         budgetRepository.save(dataBudget);
     }
 
-
-    public void delete(Integer id) {
+    public void delete(Long id) {
         budgetRepository.deleteById(id);
     }
 

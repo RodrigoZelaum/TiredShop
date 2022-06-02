@@ -1,42 +1,29 @@
 package br.com.serratec.project.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "budget")
 public class Budget {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name="id")
-    private Integer id;
+    private Long id;
 
     @Column(name="price", nullable = false)
-    private String price;
+    private String address;
 
-    @Column(name = "service", nullable = false)
-    private String service;
+    @OneToOne(mappedBy = "budget")
+    private OrderService orderService;
 
-    @Column(name="data", nullable = false)
-    private Date data;
-
-    @OneToMany(mappedBy = "budget")
-    private Set<Car> car;
-
-    public Budget(Integer id, String price, String service, Date data) {
-        this.id = id;
-        this.price = price;
-        this.service = service;
-        this.data = data;
-    }
 }

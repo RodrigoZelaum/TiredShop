@@ -1,22 +1,26 @@
 package br.com.serratec.project.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "Car")
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private Integer id;
+    private Long id;
 
     @Column(name="model")
     private String model;
@@ -25,16 +29,9 @@ public class Car {
     private String brand;
 
     @Column(name="year")
-    private Integer year;
+    private String year;
 
-    @ManyToOne
-    private Budget budget;
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    private OrderService order;
 
-
-    public Car(Integer id, String model, String brand, Integer year) {
-        this.id = id;
-        this.model = model;
-        this.brand = brand;
-        this.year = year;
-    }
 }

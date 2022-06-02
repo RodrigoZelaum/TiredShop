@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/program")
+@RequestMapping("/car")
 public class CarController {
         @Autowired
         CarService carService;
 
-        @GetMapping("/cars")
+        @GetMapping()
         public List<CarDto> getAllCars() {
             return carService.listAll();
         }
 
-        @GetMapping("/car/{id}")
-        public CarDto getCarById(@PathVariable int id) {
+        @GetMapping("/{id}")
+        public CarDto getCarById(@PathVariable Long id) {
             return carService.searchById(id);
         }
 
-        @PostMapping("/save/cars")
+        @PostMapping()
         public String saveCar(@RequestBody CarDto carDto) {
             return carService.save(carDto);
         }
 
-        @DeleteMapping("/delete/car/{id}")
-        public void deleteCar(@PathVariable Integer id)  {
+        @DeleteMapping("/{id}")
+        public void deleteCar(@PathVariable Long id)  {
             carService.delete(id);
         }
 
-        @PutMapping("/update/car/{id}")
-        public void updateCar(@PathVariable int id, @RequestBody CarDto car)  {
+        @PutMapping("/{id}")
+        public void updateCar(@PathVariable Long id, @RequestBody CarDto car)  {
             carService.update(id, car);
         }
 

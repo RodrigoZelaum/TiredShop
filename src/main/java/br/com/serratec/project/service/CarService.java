@@ -1,8 +1,11 @@
 package br.com.serratec.project.service;
 
 import br.com.serratec.project.dto.CarDto;
+import br.com.serratec.project.dto.ClientDto;
 import br.com.serratec.project.model.Car;
+import br.com.serratec.project.model.Client;
 import br.com.serratec.project.repository.CarRepository;
+import br.com.serratec.project.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +18,16 @@ public class CarService {
     @Autowired
     CarRepository carRepository;
 
+    @Autowired
+    ClientRepository clientRepository;
+
     public CarDto toDto(Car car) {
         CarDto carDto = new CarDto();
         carDto.setId(car.getId());
         carDto.setBrand(car.getBrand());
         carDto.setModel(car.getModel());
         carDto.setYear(car.getYear());
+
         return carDto;
     }
 
@@ -29,6 +36,7 @@ public class CarService {
         car.setBrand(carDto.getBrand());
         car.setModel(carDto.getModel());
         car.setYear(carDto.getYear());
+
         return car;
     }
 
@@ -38,8 +46,8 @@ public class CarService {
         return "car successfully saved";
     }
 
-    public CarDto searchById(Integer car_id) {
-        Optional<Car> car = carRepository.findById(car_id);
+    public CarDto searchById(Long id) {
+        Optional<Car> car = carRepository.findById(id);
         Car dataCar;
         CarDto carDto = new CarDto();
 
@@ -50,8 +58,8 @@ public class CarService {
         return carDto;
     }
 
-    public String update(Integer car_id, CarDto carDto) {
-        Optional<Car> car = carRepository.findById(car_id);
+    public String update(Long id, CarDto carDto) {
+        Optional<Car> car = carRepository.findById(id);
         Car dataCar = new Car();
 
         if (car.isPresent()) {
@@ -70,8 +78,8 @@ public class CarService {
         return "Car successfully updated";
     }
 
-    public String delete(Integer car_id) {
-        carRepository.deleteById(car_id);
+    public String delete(Long id) {
+        carRepository.deleteById(id);
         return "Car successfully deleted";
     }
 
@@ -79,8 +87,7 @@ public class CarService {
         List<Car> carList = carRepository.findAll();
         List<CarDto> carDtoList = new ArrayList<>();
         for (Car car : carList) {
-            CarDto carDto = new CarDto();
-            toDto(car);
+            CarDto carDto = toDto(car);
             carDtoList.add(carDto);
         }
         return carDtoList;

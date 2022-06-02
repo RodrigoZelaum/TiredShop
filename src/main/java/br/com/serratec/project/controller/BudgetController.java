@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/budget")
 public class BudgetController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class BudgetController {
     }
 
     @GetMapping("/{id}")
-    public BudgetDto getById(@PathVariable Integer id) {
+    public BudgetDto getById(@PathVariable Long id) {
         return bugdgetService.search(id);
     }
 
@@ -30,12 +31,12 @@ public class BudgetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Integer id)  {
+    public void deleteCar(@PathVariable Long id)  {
         bugdgetService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void updateCar(@PathVariable int id, @RequestBody BudgetDto car)  {
+    public void updateCar(@PathVariable Long id, @RequestBody BudgetDto car)  {
         bugdgetService.update(id, car);
     }
 }

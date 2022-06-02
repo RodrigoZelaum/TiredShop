@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +21,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -33,6 +34,9 @@ public class Client {
 
     @Column(name = "telephone")
     private String telephone;
+
+    @OneToOne(mappedBy = "client")
+    private OrderService orderService;
 
 }
 
